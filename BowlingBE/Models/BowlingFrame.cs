@@ -7,8 +7,8 @@ namespace BowlingBE.Models
 {
     public class BowlingFrame
     {
-        public int score1 { get; set; }
-        public int score2 { get; set; }
-        public int score3 { get; set; }
+        public int First { get; set; }
+        public int Second { get; set; }
+        public int Third { get; set; }
     }
 }

@@ -7,15 +7,54 @@ namespace BowlingBE.Models
 {
     public class BowlingGame
     {
-        public int score { get; set; }
 
-        public BowlingGame(List<BowlingFrame> list)
+        public List<BowlingFrame> Frames { get; set; } 
+        public int CountScore()
         {
-            score = CountScore(list);
+            if (Frames.Count > 10)
+            {
+                return -1;
+            }
+
+            var score = 0;
+            var strike = false;
+            var spare = false;
+            foreach (var frame in Frames)
+            {
+                if (strike)
+                {
+                    strike = false;
+                    score += frame.First + frame.Second;
+                }
+                if (spare)
+                {
+                    spare = false;
+                    score += frame.First;
+                }
+                // Strike
+                if (frame.First == 10)
+                {
+                    score += 10;
+                    strike = true;
+                }
+                else if (frame.First + frame.Second == 10)
+                {
+                    score += 10;
+                    spare = true;
+                }
+                else
+                {
+                    score += frame.First + frame.Second;
+                }
+            }
+            return score;
         }
 
-        private int CountScore(List<BowlingFrame> list)
+        private int CalculateFrame(BowlingFrame frame)
         {
+            var score = 0;
+            //Strike
+            
             return 0;
         }
     }
