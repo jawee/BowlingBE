@@ -62,3 +62,6 @@ C:\Users\Andreas\Documents\Projects\BowlingBE\BowlingBE\bin\Antlr3.Runtime.pdb
 C:\Users\Andreas\Documents\Projects\BowlingBE\BowlingBE\obj\Debug\BowlingBE.csprojResolveAssemblyReference.cache
 C:\Users\Andreas\Documents\Projects\BowlingBE\BowlingBE\obj\Debug\BowlingBE.dll
 C:\Users\Andreas\Documents\Projects\BowlingBE\BowlingBE\obj\Debug\BowlingBE.pdb
+C:\Users\Andreas\Documents\Projects\BowlingBE\BowlingBE\bin\System.Web.Cors.dll
+C:\Users\Andreas\Documents\Projects\BowlingBE\BowlingBE\bin\System.Web.Http.Cors.dll
+C:\Users\Andreas\Documents\Projects\BowlingBE\BowlingBE\bin\System.Web.Http.Cors.xml

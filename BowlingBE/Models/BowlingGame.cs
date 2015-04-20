@@ -49,13 +49,5 @@ namespace BowlingBE.Models
             }
             return score;
         }
-
-        private int CalculateFrame(BowlingFrame frame)
-        {
-            var score = 0;
-            //Strike
-            
-            return 0;
-        }
     }
 }
