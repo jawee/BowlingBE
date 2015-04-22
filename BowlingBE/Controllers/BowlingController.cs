@@ -17,5 +17,6 @@ namespace BowlingBE.Controllers
         {
             return Ok(game.CountScore());
         }
+
     }
 }
