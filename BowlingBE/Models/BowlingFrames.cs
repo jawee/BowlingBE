@@ -7,6 +7,11 @@ namespace BowlingBE.Models
 {
     public class BowlingFrames
     {
-        public List<BowlingFrame> Frames { get; set; } 
+        public List<BowlingFrame> Frames { get; set; }
+
+        public BowlingFrames(List<BowlingFrame> frames)
+        {
+            this.Frames = frames;
+        }
     }
 }

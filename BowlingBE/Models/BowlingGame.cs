@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BowlingBE.Models
 {
-    class BowlingGame
+    public class BowlingGame
     {
         public int Score { get; set; }
 

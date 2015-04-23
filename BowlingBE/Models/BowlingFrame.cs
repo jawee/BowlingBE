@@ -10,5 +10,12 @@ namespace BowlingBE.Models
         public int First { get; set; }
         public int Second { get; set; }
         public int Third { get; set; }
+
+        public BowlingFrame(int first, int second, int third = 0)
+        {
+            this.First = first;
+            this.Second = second;
+            this.Third = third;
+        }
     }
 }

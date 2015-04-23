@@ -16,7 +16,8 @@ namespace BowlingBE.Controllers
         [HttpPost]
         public IHttpActionResult Post(BowlingFrames frames)
         {
-            return Ok(BowlingRepository.CountScore(frames));
+            BowlingRepository br = new BowlingRepository(frames);
+            return Ok(br.CountScore());
         }
 
     }
