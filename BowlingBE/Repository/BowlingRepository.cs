@@ -31,9 +31,31 @@ namespace BowlingBE.Repository
                 {
                     rollList.Add(0);
                     rollList.Add(0);
+                    framesList.Add(new BowlingFrame(0, 0));
                 }
                 
             }
+        }
+
+        private int SumFrame(BowlingFrame frame)
+        {
+            return frame.First + frame.Second + frame.Third;
+        }
+
+        private bool FrameIsStrike(BowlingFrame frame)
+        {
+            return frame.First == 10;
+        }
+
+        private int CalculateStrikeScore(BowlingFrame frame)
+        {
+            var indexOfFrame = framesList.IndexOf(frame);
+            var nextFrame = framesList[indexOfFrame + 1];
+            if (FrameIsStrike(nextFrame))
+            {
+                return 10 + CalculateStrikeScore(framesList[indexOfFrame + 1]);
+            }
+            return 10 + SumFrame(nextFrame);
         }
 
 
@@ -49,23 +71,18 @@ namespace BowlingBE.Repository
             var score = 0;
             var strike = false;
             var spare = false;
+            var strikeCount = 0;
             foreach (var frame in framesList)
             {
-                if (strike)
-                {
-                    strike = false;
-                    score += frame.First + frame.Second;
-                }
                 if (spare)
                 {
                     spare = false;
                     score += frame.First;
                 }
                 // Strike
-                if (frame.First == 10)
+                if (FrameIsStrike(frame))
                 {
-                    score += 10;
-                    strike = true;
+                    score += CalculateStrikeScore(frame);
                 }
                 else if (frame.First + frame.Second == 10) // Spare
                 {
