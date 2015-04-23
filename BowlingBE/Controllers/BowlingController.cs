@@ -7,15 +7,16 @@ using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using BowlingBE.Models;
+using BowlingBE.Repository;
 
 namespace BowlingBE.Controllers
 {
     public class BowlingController : ApiController
     {
         [HttpPost]
-        public IHttpActionResult Post(BowlingGame game)
+        public IHttpActionResult Post(BowlingFrames frames)
         {
-            return Ok(game.CountScore());
+            return Ok(BowlingRepository.CountScore(frames));
         }
 
     }

@@ -1,53 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BowlingBE.Models
 {
-    public class BowlingGame
+    class BowlingGame
     {
+        public int Score { get; set; }
 
-        public List<BowlingFrame> Frames { get; set; } 
-        public int CountScore()
+        public BowlingGame(int Score)
         {
-            if (Frames.Count > 10)
-            {
-                return -1;
-            }
-
-            var score = 0;
-            var strike = false;
-            var spare = false;
-            foreach (var frame in Frames)
-            {
-                if (strike)
-                {
-                    strike = false;
-                    score += frame.First + frame.Second;
-                }
-                if (spare)
-                {
-                    spare = false;
-                    score += frame.First;
-                }
-                // Strike
-                if (frame.First == 10)
-                {
-                    score += 10;
-                    strike = true;
-                }
-                else if (frame.First + frame.Second == 10)
-                {
-                    score += 10;
-                    spare = true;
-                }
-                else
-                {
-                    score += frame.First + frame.Second;
-                }
-            }
-            return score;
+            this.Score = Score;
         }
     }
 }
