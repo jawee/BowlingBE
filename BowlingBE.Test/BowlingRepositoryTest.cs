@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BowlingBE.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class BowlingRepositoryTest
     {
 
         [TestMethod]
@@ -79,6 +79,18 @@ namespace BowlingBE.Test
             Assert.AreEqual(25, br.CountScore().Score, "Test Two Spares in a row");
         }
 
+        [TestMethod]
+        public void TestThreeSparesInARow()
+        {
+            List<BowlingFrame> list = new List<BowlingFrame>();
+            list.Add(new BowlingFrame(6, 4));
+            list.Add(new BowlingFrame(5, 5));
+            list.Add(new BowlingFrame(5, 5));
+            BowlingFrames bowlingFrames = new BowlingFrames(list);
+            var br = new BowlingRepository(bowlingFrames);
+            Assert.AreEqual(40, br.CountScore().Score, "Test Two Spares in a row");
+        }
+
         //Strikes
         [TestMethod]
         public void TestStrikeFrame()
@@ -110,18 +122,6 @@ namespace BowlingBE.Test
             BowlingFrames bowlingFrames = new BowlingFrames(list);
             var br = new BowlingRepository(bowlingFrames);
             Assert.AreEqual(30, br.CountScore().Score, "Test Two Strikes in a row");
-        }
-
-        [TestMethod]
-        public void TestTwoStrikesInARowFollowedByNormal()
-        {
-            List<BowlingFrame> list = new List<BowlingFrame>();
-            list.Add(new BowlingFrame(10, 0));
-            list.Add(new BowlingFrame(10, 0));
-            list.Add(new BowlingFrame(3,5));
-            BowlingFrames bowlingFrames = new BowlingFrames(list);
-            var br = new BowlingRepository(bowlingFrames);
-            Assert.AreEqual(49, br.CountScore().Score, "Test Two Strikes in a row then a normal one");
         }
 
         [TestMethod]

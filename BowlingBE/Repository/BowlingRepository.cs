@@ -37,12 +37,12 @@ namespace BowlingBE.Repository
             }
         }
 
-        private int SumFrame(BowlingFrame frame)
+        private static int SumFrame(BowlingFrame frame)
         {
             return frame.First + frame.Second + frame.Third;
         }
 
-        private bool FrameIsStrike(BowlingFrame frame)
+        private static bool FrameIsStrike(BowlingFrame frame)
         {
             return frame.First == 10;
         }
@@ -51,15 +51,16 @@ namespace BowlingBE.Repository
         {
             var indexOfFrame = framesList.IndexOf(frame);
             var nextFrame = framesList[indexOfFrame + 1];
-            if (FrameIsStrike(nextFrame))
+            if (!FrameIsStrike(nextFrame))
             {
-                return 10 + CalculateStrikeScore(framesList[indexOfFrame + 1]);
+                return 10 + SumFrame(nextFrame);
             }
-            return 10 + SumFrame(nextFrame);
+            if (indexOfFrame + 1 >= framesList.Count)
+            {
+                return 10;
+            }
+            return 10 + CalculateStrikeScore(framesList[indexOfFrame + 1]) - framesList[indexOfFrame + 2].Second;
         }
-
-
-
 
         public BowlingGame CountScore()
         {
